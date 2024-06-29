@@ -1,0 +1,82 @@
+{% extends 'content.html.twig' %}
+{% set page_title = "Gestion des heros" %}
+
+{% block title %}
+	{{ page_title }}
+{% endblock %}
+
+{% block content %}
+	<div class="flex justify-around">
+		{{ component("Button", {
+                url: path('app_admin'),
+                size: "w-64 h-32",
+                label: "Retour à l'accueil",
+            })}}
+		{{ component("Button", {
+                url: path('app_hero_new'),
+                size: "w-64 h-32",
+                label: "Créer un hero",
+            })}}
+	</div>
+	<table class="table-auto text-2xl w-full border border-separate border-slate-500 border-spacing-1">
+		<thead class="text-left bg-red-900 bg-opacity-20">
+			<tr>
+				<th class="border border-slate-600">Id</th>
+				<th class="border border-slate-600">Nom</th>
+				<th class="border border-slate-600">Avatar</th>
+				<th class="border border-slate-600">Level</th>
+				<th class="border border-slate-600">Lifepoints</th>
+				<th class="border border-slate-600">Age</th>
+				<th class="border border-slate-600">Background</th>
+				<th class="border border-slate-600">Strength</th>
+				<th class="border border-slate-600">Dexterity</th>
+				<th class="border border-slate-600">Endurance</th>
+				<th class="border border-slate-600">Intelligence</th>
+				<th class="border border-slate-600">Wisdom</th>
+				<th class="border border-slate-600">Charisma</th>
+				<th class="border border-slate-600">actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for character in characters %}
+				<tr>
+					<td class="border border-slate-600">{{ character.id }}</td>
+					<td class="border border-slate-600">{{ character.name }}</td>
+					<td class="border border-slate-600">{{ character.characterAvatarUrl }}</td>
+					<td class="border border-slate-600">{{ character.level }}</td>
+					<td class="border border-slate-600">{{ character.lifepoints }}</td>
+					<td class="border border-slate-600">{{ character.age }}</td>
+					<td class="border border-slate-600">{{ character.background }}</td>
+					<td class="border border-slate-600">{{ character.statStrength }}</td>
+					<td class="border border-slate-600">{{ character.statDexterity }}</td>
+					<td class="border border-slate-600">{{ character.statEndurance }}</td>
+					<td class="border border-slate-600">{{ character.statIntelligence }}</td>
+					<td class="border border-slate-600">{{ character.statWisdom }}</td>
+					<td class="border border-slate-600">{{ character.statCharisma }}</td>
+					<td class="border border-slate-600">
+						<div class="flex flex-wrap">
+							{{ component("Button", {
+                                    url: path('app_hero_show', {'id': character.id}),
+                                    size: "w-28 h-8",
+                                    label: "Voir",
+									textSize: "text-sm"
+                                })}}
+
+							{{ component("Button", {
+                                    url: path('app_hero_edit', {'id': character.id}),
+                                    size: "w-28 h-8",
+                                    label: "Editer",
+									textSize: "text-sm"
+                                }
+                                )}}
+						</div>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="14">Pas d'enregistrements</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

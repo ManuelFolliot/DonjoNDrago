@@ -1,0 +1,10 @@
+{% extends 'content.html.twig' %}
+{% set page_title = "Créer un nouvel alignement" %}
+
+{% block title %}
+	{{ page_title }}
+{% endblock %}
+
+{% block content %}
+    {% include 'alignment/_form.html.twig' with {'button_label': "Créer l'alignement"} %}
+{% endblock %}

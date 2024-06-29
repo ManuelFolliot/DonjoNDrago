@@ -1,0 +1,11 @@
+<form aria-label="formulaire suppression personnage" method="post" action="{{ path('app_hero_delete', {'id': character.id}) }}" onsubmit="return confirm('Etes vous sûr de supprimer ce hero ?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ character.id) }}">
+    <div class="mb-8" aria-label="Bouton supprimer {{ character.name }}">
+        {{ component('Button',{
+        label: button_label ?? 'Supprimer',
+        type: 'submit',
+        size: button_size ?? 'w-40 h-20 xl:w-64 xl:h-32', 
+        textSize: 'text-xl xl:text-2xl',
+        }) }}
+    </div>
+</form>

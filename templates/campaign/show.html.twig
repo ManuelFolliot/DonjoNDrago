@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Campagne {{ campaign.name }}
+{% endblock %}
+
+{% block body %}
+    <div {{ stimulus_controller('enemies-add') }} class="flex sm:flex-col xl:flex-row gap-6 mx-4 h-full text-yellow-500">     
+        {% include "campaign/_partials/_players.html.twig" %}
+        <div {{ stimulus_controller("background-campain") }} class="flex flex-col justify-between gap-3 xl:w-8/12">
+            {% include "campaign/_partials/_background.html.twig" %}
+            {% include "campaign/_partials/_actions.html.twig" %}
+        </div>
+            
+        {% include "campaign/_partials/_enemies.html.twig" %}
+    </div>
+{% endblock %}

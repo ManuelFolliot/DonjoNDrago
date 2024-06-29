@@ -1,0 +1,15 @@
+{% extends 'content.html.twig' %}
+{% set page_title = "Créer une campagne" %}
+
+{% block title %}{{ page_title }}
+{% endblock %}
+
+{% block content %}
+
+
+    {% include 'campaign/_form.html.twig' with {'button_label': "Créer une campagne"} %}
+
+    
+
+
+{% endblock %}

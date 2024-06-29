@@ -1,0 +1,36 @@
+{% extends 'content.html.twig' %}
+{% set page_title = "Page d'administration" %}
+
+{% block title %}{{ page_title }}
+{% endblock %}
+
+{% block content %}
+<div class="grid grid-cols-3 gap-8 justify-between items-center">
+{{ component("Button", {
+                url: path('app_user_index'),
+                label: "Utilisateurs",
+            })}}
+{{ component("Button", {
+                url: path('app_hero_index'),
+                label: "Heros",
+            })}}
+{{ component("Button", {
+                url: path('app_campaign_index'),
+                label: "Campagnes",
+            })}}
+{{ component("Button", {
+                url: path('app_alignment_index'),
+                label: "Alignements",
+            })}}
+{{ component("Button", {
+                url: path('app_job_index'),
+                label: "Classes",
+            })}}
+{{ component("Button", {
+                url: path('app_race_index'),
+                label: "Races",
+            })}}
+
+</div>
+
+{% endblock %}

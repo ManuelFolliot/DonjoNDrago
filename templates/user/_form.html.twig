@@ -1,0 +1,34 @@
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+{{ form_row(form.email) }}
+{{ form_row(form.password.first) }}
+{{ form_row(form.password.second) }}
+{{ form_row(form.pseudo) }}
+
+{{ form_label(form.userAvatarUrl, null, {
+	'label': "Choisissez votre avatar",
+	'label_attr': {
+		'class': 'text-yellow-500 font-bold text-2xl'
+}}) }}
+<div class="input" {{ stimulus_controller('avatar-select', {"avatar": "user"}) }}>
+	<div class="flex gap-4 p-8 justify-center flex-wrap"  data-action="click->avatar-select#select">
+		{% for index in 1..6 %}
+			<div class="image-block rounded-xl  border-4 border-yellow-500 border-opacity-0 shadow-yellow-500" data-value="{{ 'avatar' ~ index ~ ".svg" }}" data-avatar-select-target="images">
+				<img class="rounded-xl size-24" src="{{ asset('images/avatar/avatar' ~ index ~ ".svg") }}" alt="Avatar{{index}}" >
+			</div>
+		{% endfor %}
+	</div>
+	{{ form_widget(form.userAvatarUrl, {'attr': {'class': 'hidden', "data-avatar-select-target": "input"}}) }}
+</div>
+
+
+
+<div class="py-4 flex justify-center">
+	{{ component('Button', {
+            label: button_label,
+            type: "submit",
+        }) }}
+</div>
+
+{{ form_rest(form) }}
+{{ form_end(form) }}

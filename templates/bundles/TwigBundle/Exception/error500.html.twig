@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Erreur Page non trouvée
+{% endblock %}
+
+{% block body %}
+	<div class="flex flex-col gap-3 items-center box text-yellow-500 mx-10 p-3 w-auto m-w-80">
+		<h1 class="text-2xl">Erreur 500</h1>
+		<p>Erreur serveur interne: la requête n'a pu aboutir</p>
+
+		<img src="{{ asset("images/internal_server_error.webp") }}" alt="" class="w-96 border-2 border-yellow-500">
+		{{ exception.message }}
+		{{ component("Button", {
+						url: path('app_main'),
+						size: "w-40 h-32",
+						label: "Retour accueil",
+					})}}
+	</div>
+
+
+{% endblock %}

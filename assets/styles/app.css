@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*:focus {
+  outline: none;
+}
+
+
+@font-face {
+  font-family: kyiv;
+  src: url(../fonts/KyivTypeSerif-Regular.ttf);
+}
+
+@layer components {
+  .box {
+    @apply border-solid rounded-xl border-4 border-black bg-black bg-opacity-80;
+  }
+
+  .input {
+    @apply bg-yellow-900 bg-opacity-0 focus:bg-opacity-20 rounded-xl border-2 border-yellow-500 p-4 text-2xl text-red-600 w-full;
+  }
+
+  .navlink {
+    @apply transform hover:text-yellow-500 border-2 border-opacity-0 hover:border-opacity-100 border-solid rounded-lg border-yellow-500 transition-all duration-100 p-1
+  }
+
+  .dice {
+    @apply transform hover:text-red-500 border-2 border-opacity-0 hover:border-opacity-100 border-solid rounded-lg border-red-500 transition-all duration-100;
+  }
+
+  .rolling {
+    @apply duration-1000 ease-in rotate-[720deg]
+  }
+
+  .radioselect {
+    @apply p-2 text-yellow-500 bg-red-900 border border-yellow-500 rounded-lg cursor-pointer w-full inline-block text-center
+    hover:text-red-900 hover:bg-yellow-600 peer-checked:bg-yellow-500 peer-checked:text-red-900 peer-checked:border-red-900 capitalize
+  }
+}
+
+/* tom-select custom styling */
+.ts-wrapper.multi .ts-control [data-value] {
+  @apply bg-red-900 text-yellow-500 text-2xl bg-none !important;
+}
+.ts-control, .ts-wrapper.single.input-active .ts-control, .ts-control input {
+  @apply bg-yellow-500 border-none bg-opacity-0 text-yellow-500 text-2xl !important;
+}
+
+.ts-dropdown {
+  @apply bg-black bg-opacity-80 text-yellow-500 text-xl border-yellow-500 !important;
+}
+
+.ts-dropdown .active {
+  @apply  bg-red-900 text-yellow-500 !important;
+}
+
+.ts-wrapper.plugin-remove_button:not(.rtl) .item .remove {
+  @apply border-yellow-500 !important;
+}
+
+input[type=number].appearance-none::-webkit-inner-spin-button,
+input[type=number].appearance-none::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number].appearance-none {
+  -moz-appearance: textfield;
+}
+
+
+
+body {
+  background-image: url("../images/background_pattern.jpeg");
+
+  background-repeat: repeat;
+  background-color: rgb(116, 139, 149);
+
+  font-family: 'kyiv', serif;
+}

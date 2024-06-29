@@ -1,0 +1,10 @@
+{% extends 'content.html.twig' %}
+{% set page_title = "Créer un nouveau compte" %}
+
+{% block title %}
+	{{ page_title }}
+{% endblock %}
+
+{% block content %}
+	{% include 'user/_form.html.twig' with {'button_label': "S'inscrire"} %}
+{% endblock %}

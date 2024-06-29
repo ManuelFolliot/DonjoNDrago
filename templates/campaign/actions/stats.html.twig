@@ -1,0 +1,55 @@
+<turbo-frame id="player-stats-{{character.id}}">
+	<div class="flex justify-center w-full">
+	<h3 class="text-align text-2xl text-bold">{{ character.name }}</h3></div>
+
+	<table class="my-3">
+		<thead>
+			<tr>
+				<th class="text-1xl sm:px-12 xl:p-6 ">Attributs</th>
+				<th></th>
+				<th class="text-1xl sm:px-12 xl:p-6">Modificateur de dés</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="text-1xl">
+				<td>Force</td>
+				<td class="text-right">{{ character.statStrength }}</td>
+				<td class="text-center">{{ character.race.strengthModifier }}</td>
+			</tr>
+			<tr class="text-1xl">
+				<td>Endurance</td>
+				<td class="text-right">{{ character.statEndurance }}</td>
+				<td class="text-center">{{ character.race.enduranceModifier }}</td>
+			</tr>
+			<tr class="text-1xl">
+				<td>Dextérité</td>
+				<td class="text-right">{{ character.statDexterity }}</td>
+				<td class="text-center">{{ character.race.dexterityModifier }}</td>
+			</tr>
+			<tr class="text-1xl">
+				<td>Intelligence</td>
+				<td class="text-right">{{ character.statIntelligence }}</td>
+				<td class="text-center">{{ character.race.intelligenceModifier }}</td>
+			</tr>
+			<tr class="text-1xl">
+				<td>Sagesse</td>
+				<td class="text-right">{{ character.statWisdom }}</td>
+				<td class="text-center">{{ character.race.wisdomModifier }}</td>
+			</tr>
+			<tr class="text-1xl">
+				<td>Charisme</td>
+				<td class="text-right">{{ character.statCharisma }}</td>
+				<td class="text-center">{{ character.race.charismaModifier }}</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<a href="" data-turbo-frame="_top">
+		{{ component("Button", {
+		"label": "Retour",
+		"type": "submit",
+		"size": "w-28 h-8",
+		"textSize": "text-sm"
+	})}}
+	</a>
+</turbo-frame>

@@ -1,0 +1,9 @@
+{{ form_start(form) }}
+{{ form_widget(form) }}
+<div class="py-4 flex justify-center">
+	{{ component('Button', {
+            label: button_label,
+            type: "submit",
+        }) }}
+</div>
+{{ form_end(form) }}

@@ -1,0 +1,56 @@
+{# MARK: RACE
+		Form RACE (Character Race) #}
+<div class=" pt-8">{{ form_label(form.race )}}</div>
+{{ form_errors(form.race) }}
+<div class="input flex sm:flex-col lg:flex-row gap-8 justify-center" {{ stimulus_controller("character-select") }}>
+	<div class="flex justify-between sm:flex(row lg:flex-col gap-2 basis-1/4 p-4">
+		{% for index, race in form.race %}
+			{% set racedata = form.race.vars.choices[index].data %}
+            {% set racedataObject = {
+                "strength": racedata.strengthModifier,
+                "dexterity": racedata.dexterityModifier,
+                "endurance": racedata.enduranceModifier,
+                "intelligence": racedata.intelligenceModifier,
+                "wisdom": racedata.wisdomModifier,
+                "charisma": racedata.charismaModifier
+            } %}
+            <div>
+				{{ form_widget(race, {attr: {
+						"data-action": "click->character-select#show click->newcharacter#selectRadio",
+						"data-character-select-id-param": race.vars.value,
+                        "data-newcharacter-stats": racedataObject|json_encode,
+						"data-character-select-target": "radios",
+						"aria-required": "true"
+					}}) }}
+				{{ form_label(race, null, {"label_attr": {"class": "radioselect"}}) }}
+			</div>
+		{% endfor %}
+	</div>
+	<div class="border-2 border-red-900 p-4 flex justify-center overflow-hidden rounded-lg relative basis-3/4">
+		<div class="flex justify-center items-center text-4xl text-yellow-500" data-character-select-target="emptyDescription">Veuillez selectionner une Race. </div>
+		{% for race in form.race.vars.choices %}
+			<div class="hidden" data-description-id="{{ race.value }}" data-character-select-target="description" >
+				<div class="h-full">
+					<img class="object-cover max-h-[400px]" src="{{ asset("images/race/" ~ race.data.raceUrl) }}" alt="{{ race.data.raceUrl }}">
+				</div>
+				<div class=" text-yellow-500 text-2xl absolute bottom-2 left-2 box p-2 m-4 ">
+					<div class="border-b-2 border-red-900 pb-2">{{ race.data.description }}</div>
+					<div class="flex flex-wrap mt-2">
+						<span class="border-r-2 border-red-900 pr-2">Force:
+							{{ race.data.strengthModifier }}</span>
+						<span class="border-r-2 border-red-900 px-2">Dextétité:
+							{{ race.data.dexterityModifier }}</span>
+						<span class="border-r-2 border-red-900 px-2">Endurance:
+							{{ race.data.enduranceModifier }}</span>
+						<span class="border-r-2 border-red-900 px-2">Intelligence:
+							{{ race.data.intelligenceModifier }}</span>
+						<span class="border-r-2 border-red-900 px-2">Sagesse:
+							{{ race.data.wisdomModifier }}</span>
+						<span class="pl-2">Charisme:
+							{{ race.data.charismaModifier }}</span>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+</div>

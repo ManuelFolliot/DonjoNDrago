@@ -1,0 +1,15 @@
+{# MARK: AVATAR 
+		Form AVATAR (Character avatar URL) #}
+	<div class="pt-8">
+		{{ form_label(form.characterAvatarUrl) }}
+	</div>
+	<div class="input" {{ stimulus_controller('avatar-select', {"avatar": "character"} ) }}>
+		<div class="flex gap-4 p-8 justify-center flex-wrap" aria-required="true" data-action="click->avatar-select#select">
+			{% for index in 1..6 %}
+				<div class="rounded-xl  border-4 border-yellow-500 border-opacity-0 shadow-yellow-500" data-value="{{ 'avatar' ~ index ~ ".svg" }}" data-avatar-select-target="images">
+					<img class="rounded-xl size-24" src="{{ asset('images/avatar/avatar' ~ index ~ ".svg") }}" alt="Image de profil Avatar{{index}}">
+				</div>
+			{% endfor %}
+		</div>
+		{{ form_widget(form.characterAvatarUrl, {'attr': {'class': 'hidden', "data-avatar-select-target": "input" }}) }}
+	</div>

@@ -1,0 +1,25 @@
+<li class="lg:text-xl xl:text-2xl px-0">
+	<a href="{{ path('app_main') }}" class="navlink" aria-label="Retour à l'accueil">ACCUEIL</a>
+</li>
+
+{% if app.user and "ROLE_ADMIN" in app.user.roles %}
+	<li class="lg:text-xl xl:text-2xl px-0">
+		<a href="{{ path('app_admin') }}" class="navlink" aria-label="Lien vers la page admin">ADMIN</a>
+	</li>
+{% endif %}
+
+{% if app.user %}
+<li class="lg:text-xl xl:text-2xl px-0">
+		<a href="{{ path('app_profil') }}" class="navlink" aria-label="Liens vers mes chroniques (personnages et campagnes)">MES CHRONIQUES</a>
+	</li>
+{% endif %}
+
+
+<li class="lg:text-xl xl:text-2xl px-0">
+	{% if app.user %}
+		<a href="{{ path('app_logout')  }} " class="navlink" onclick="return confirm ('Se deconnecter ?')" aria-label="Déconnexion, veuillez confirmer">DECONNEXION</a>
+	{% else %}
+		<a href="{{ path('app_login') }}" class="navlink" aria-label="Connexion">CONNEXION</a>
+	{% endif %}
+</li>
+

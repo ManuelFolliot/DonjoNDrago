@@ -1,0 +1,17 @@
+{% extends 'content.html.twig' %}
+{% set page_title = "Créer une nouvelle race" %}
+
+{% block title %}
+	{{ page_title }}
+{% endblock %}
+
+{% block content %}
+
+    {% include 'race/_form.html.twig' with {'button_label': "Créer la race"} %}
+    <div>
+	{{ component("Button", {
+        url: path('app_race_index'),
+        label: "Retour à la liste",
+        })}}
+        </div>
+{% endblock %}

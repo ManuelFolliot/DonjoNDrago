@@ -1,0 +1,8 @@
+<div class="flex items-center justify-between" {{attributes }}>
+	<span class="text-yellow-600">Points de vie :</span>
+	<span>{{ points }}</span>/20
+	<button class="text-yellow-500 text-2xl border-2 border-yellow-500 rounded px-1 m-2" data-action="live#action"
+    data-live-action-param="debounce(300)|increment">+</button>
+	<button class="text-yellow-500 text-2xl border-2 border-yellow-500 rounded px-1" data-action="live#action"
+    data-live-action-param="debounce(300)|decrement">-</button>
+</div>

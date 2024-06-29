@@ -1,0 +1,40 @@
+{% extends 'content.html.twig' %}
+{% set page_title = "Alignement " ~  alignment.id %}
+{% block title %}
+	{{ page_title }}
+{% endblock %}
+
+{% block content %}
+    
+
+    <table class="table text-2xl">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ alignment.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ alignment.name }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ alignment.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+<div class="flex gap-8 justify-between">
+    {{ component("Button", {
+                url: path('app_alignment_index'),
+                size: "w-40 h-20 xl:w-64 xl:h-32",
+                label: "Retour à la liste",
+            })}}
+    {{ component("Button", {
+                url: path('app_alignment_edit', {'id': alignment.id}),
+                size: "w-40 h-20 xl:w-64 xl:h-32",
+                label: "Editer l'alignement",
+            })}}
+    
+    {{ include('alignment/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

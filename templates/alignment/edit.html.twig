@@ -1,0 +1,19 @@
+{% extends 'content.html.twig' %}
+{% set page_title = "Editer Alignement " ~  alignment.id %}
+{% block title %}
+	{{ page_title }}
+{% endblock %}
+
+{% block content %}
+
+	{{ include('alignment/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+	<div class="flex justify-between">
+		{{ component("Button", {
+                url: path('app_alignment_index', {'id': alignment.id}),
+                size: "w-52 h-32",
+                label: "Retour à la liste",
+            })}}
+
+		{{ include('alignment/_delete_form.html.twig') }}
+	</div>
+{% endblock %}

@@ -1,0 +1,38 @@
+<form aria-label="formulaire connexion" method="post">
+	<div class="flex flex-col items-center">
+		{% if app.user %}
+			<div class="mb-3">
+				You are logged in as
+				{{ app.user.userIdentifier }},
+				<a href="{{ path('app_logout') }}">Logout</a>
+			</div>
+		{% endif %}
+
+		<div class="p-8 flex flex-col">
+			<label for="username" class="text-4xl font-bold capitalize">Email</label>
+			<input aria-required="true" type="email" value="" name="_username" id="username" class="form-control h-16 input" autocomplete="email" required autofocus>
+		</div>
+
+		<div class="p-8 flex flex-col">
+			<label for="password" class="text-4xl font-bold capitalize">Password</label>
+			<input aria-required="true" type="password" name="_password" id="password" class="form-control h-16 input" autocomplete="current-password" required>
+
+			<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+		</div>
+		{#
+									            Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+									            See https://symfony.com/doc/current/security/remember_me.html
+									
+									            <div class="checkbox mb-3">
+									                <label>
+									                    <input type="checkbox" name="_remember_me"> Remember me
+									                </label>
+									            </div>
+									        #}
+		{{ component('Button', {
+            label: "Se connecter",
+            type: "submit",
+			alt: "Se connecter",
+        }) }}
+	</div>
+</form>

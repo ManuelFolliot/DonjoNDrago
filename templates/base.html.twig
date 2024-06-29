@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Dunjo et Drago{% endblock %}</title>
+        <link rel="icon" href="{{ asset("images/logo-dunjo-drago.svg") }}">
+        {% block stylesheets %}
+        {% endblock %}
+
+        {% block javascripts %}
+            {% block importmap %}{{ importmap('app') }}{% endblock %}
+        {% endblock %}
+    </head>
+    {# <body class="h-svh flex flex-col gap-8 min-h-screen min-w-screen"> #}
+    <body class="flex flex-col h-screen">
+        {% include "_partials/_header.html.twig" %}
+        <div class="flex-grow py-2" role="main">
+        {% block body %}{% endblock %}
+        </div>
+        {% include "_partials/_footer.html.twig" %}
+    </body>
+</html>

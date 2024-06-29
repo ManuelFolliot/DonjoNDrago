@@ -1,0 +1,27 @@
+{% block content %}
+	<header class="flex sticky top-0 start-0 justify-between items-center bg-black text-red-600 z-50" {{ stimulus_controller("mobile-sidebar") }} role="banner">
+		<div class="flex sm:flex-row-reverse lg:flex-row sm:justify-between lg:justify-start px-8 sm:w-full lg:w-auto items-center">
+			<div class="hidden lg:block p-2">
+				<a href="{{ path('app_main') }}">
+					<img src="{{asset("images/logo-dunjo-drago.svg") }}" alt="Lien vers l'accueil" class="lg:size-14 xl:size-24">
+				</a>
+			</div>
+			<div class="lg:hidden z-50" data-action="click->mobile-sidebar#toggle">
+				<div class="flex size-24 px-4 items-center ">
+					<svg role="img" aria-label="menu déroulant petits écrans" xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 179.51 193.023" alt="Ouvre menu de navigation déroulant">
+						<path class="origin-bottom transition-transform duration-700" data-mobile-sidebar-target="penIcon" fill="#fdb600" stroke="#7e2222" stroke-width="2.427" d="M57.486 153.195h-.002c-6.034 0-10.922-4.888-10.922-10.923v-11.766H79v11.264l-.013.013v.503c0 6.034-4.887 10.92-10.92 10.922h-.002zM79 122.016H46.562l.014-61.342c0-2.583.658-5.133 1.89-7.413l.002-.002 11.378-20.867.002-.004a3.367 3.367 0 0 1 2.933-1.732c1.214 0 2.336.665 2.93 1.754l11.384 20.876v.002a15.604 15.604 0 0 1 1.892 7.413z"/>
+						<path data-mobile-sidebar-target="swordIcon" class="origin-bottom transition-transform duration-500" fill="#7e2222" stroke="#fdb600" stroke-width="1.942" d="M110.008 118.81V43.094c.039-.332.095-.665.169-.998.078-.35.156-.588.225-.739a4.08 4.08 0 0 1 .363-.618 3.72 3.72 0 0 1 .369-.475l7.051-7.052c.367-.366.801-.549 1.365-.549s.998.183 1.365.55l7.041 7.04.372.478.36.618.236.76.168 1.01v76.662h11.895l.025-.001c.525-.028.965.138 1.378.55a2 2 0 0 1 .613 1.493v6.154a2 2 0 0 1-.613 1.493 1.997 1.997 0 0 1-1.492.613h-.001l-14.932-.064-.978-.004.003.978.064 22.987c-.036.653-.27 1.174-.71 1.613-.442.443-.935.645-1.525.645h-6.538c-.59 0-1.082-.202-1.525-.645-.439-.44-.673-.96-.709-1.613l.064-22.987.002-.974H98.114l-.026.002c-.524.027-.965-.138-1.377-.551a1.995 1.995 0 0 1-.614-1.493v-6.154c0-.6.199-1.079.614-1.493.412-.412.853-.578 1.377-.55l.026.001h11.894z"/>
+						<ellipse cx="89.755" cy="96.512" stroke="#7e2222" stroke-width="10" rx="84.755" ry="91.512"/>
+					</svg>
+				</div>
+			</div>
+			<h1 class="text-3xl lg:text-2xl xl:text-5xl 2xl:text-6xl bg-clip-text bg-[url('../images/firetexture_comp.jpg')] text-transparent font-bold uppercase animate-slowpan "><a href={{ path("app_main") }}> DONJ'O & DRAG'O</h1>
+		</div>
+		<div class="hidden lg:block" role="navigation">
+			{% include "_partials/_nav-desktop.html.twig" %}
+		</div>
+		<aside data-mobile-sidebar-target="popUpMenu" class=" xl:hidden fixed top-0 right-0 h-full transition-all text-yellow-600 bg-black bg-opacity-95 translate-x-full" role="navigation">
+			{% include "_partials/_nav-mobile.html.twig" %}
+		</aside>
+	</header>
+{% endblock %}

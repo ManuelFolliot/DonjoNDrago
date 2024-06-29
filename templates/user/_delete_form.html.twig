@@ -1,0 +1,10 @@
+<form aria-label="formulaire suppression utilisateur" method="post" action="{{ path('app_user_delete', {'id': user.id}) }}" onsubmit="return confirm('Etes vous sûr de supprimer cet utilisateur ?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
+    {{ component("Button", {
+                url: path('app_main'),
+                size: "w-40 h-20 xl:w-64 xl:h-32",
+                textSize: "sm:text-sm lg:text-2xl",
+                label: "Supprimer",
+                type: "submit"
+            })}}
+</form>

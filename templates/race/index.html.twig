@@ -1,0 +1,74 @@
+{% extends 'content.html.twig' %}
+{% set page_title = "Gestion des races de heros" %}
+
+{% block title %}
+	{{ page_title }}
+{% endblock %}
+
+{% block content %}
+	<div class="flex justify-around">
+		{{ component("Button", {
+                url: path('app_admin'),
+                size: "w-64 h-32",
+                label: "Retour à l'accueil",
+            })}}
+		{{ component("Button", {
+                url: path('app_race_new'),
+                label: "Créer une race",
+            })}}
+	</div>
+
+	<table class="table-auto text-2xl w-full border border-separate border-slate-500 border-spacing-1">
+		<thead class="text-left bg-red-900 bg-opacity-20">
+			<tr>
+				<th class="border border-slate-600">Id</th>
+				<th class="border border-slate-600">Nom</th>
+				<th class="border border-slate-600">Description</th>
+				<th class="border border-slate-600">StrengthMod</th>
+				<th class="border border-slate-600">DexterityMod</th>
+				<th class="border border-slate-600">EnduranceMod</th>
+				<th class="border border-slate-600">IntelligenceMod</th>
+				<th class="border border-slate-600">WisdomMod</th>
+				<th class="border border-slate-600">CharismaMod</th>
+				<th class="border border-slate-600">RaceUrl</th>
+				<th class="border border-slate-600">actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for race in races %}
+				<tr>
+					<td class="border border-slate-600">{{ race.id }}</td>
+					<td class="border border-slate-600">{{ race.name }}</td>
+					<td class="border border-slate-600">{{ race.description }}</td>
+					<td class="border border-slate-600">{{ race.strengthModifier }}</td>
+					<td class="border border-slate-600">{{ race.dexterityModifier }}</td>
+					<td class="border border-slate-600">{{ race.enduranceModifier }}</td>
+					<td class="border border-slate-600">{{ race.intelligenceModifier }}</td>
+					<td class="border border-slate-600">{{ race.wisdomModifier }}</td>
+					<td class="border border-slate-600">{{ race.charismaModifier }}</td>
+					<td class="border border-slate-600">{{ race.raceUrl }}</td>
+					<td class="flex flex-wrap border border-slate-600">
+						{{ component("Button", {
+                                    url: path('app_race_show', {'id': race.id}),
+                                    size: "w-28 h-8",
+                                    label: "Voir",
+									textSize: "text-sm"
+                                })}}
+
+						{{ component("Button", {
+                                    url: path('app_race_edit', {'id': race.id}),
+                                    size: "w-28 h-8",
+                                    label: "Editer",
+									textSize: "text-sm"
+                                }
+                                )}}
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="11">Pas d'enregistrements</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

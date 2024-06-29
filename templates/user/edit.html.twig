@@ -1,0 +1,20 @@
+{% extends 'content.html.twig' %}
+{% set page_title = "Editer Utilisateur " ~  user.id %}
+{% block title %}
+	{{ page_title }}
+{% endblock %}
+
+{% block content %}
+
+	{{ include('user/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+	<div class="flex justify-between gap-8">
+		{{ component("Button", {
+                url: path('app_user_show', {'id': user.id}),
+                size: "w-52 h-32",
+                label: "Retour à la liste",
+            })}}
+
+		{{ include('user/_delete_form.html.twig') }}
+	</div>
+
+{% endblock %}

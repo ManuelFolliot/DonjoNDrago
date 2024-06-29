@@ -1,0 +1,35 @@
+{% use 'form_div_layout.html.twig' %}
+
+{%- block number_widget -%}
+    {%- set widget_class = widget_class|default('appearance-none text-4xl font-bold bg-yellow-500 w-16') -%}
+    {{- parent() -}}
+{%- endblock number_widget -%}
+
+
+{%- block form_row -%}
+    {%- set row_attr = row_attr|merge({ class: row_attr.class|default(row_class|default(' text-yellow-500')) }) -%}
+    {{- parent() -}}
+{%- endblock form_row -%}
+
+{%- block widget_attributes -%}
+    {%- set attr = attr|merge({ class: attr.class|default(widget_class|default('h-16 input')) ~ (disabled ? ' ' ~ widget_disabled_class|default('border-red-300 text-gray-500')) ~ (errors|length ? ' ' ~ widget_errors_class|default('border-red-700 bg-opacity-30 bg-yellow-900')) }) -%}
+    {{- parent() -}}
+{%- endblock widget_attributes -%}
+
+{%- block form_label -%}
+    {%- set label_attr = label_attr|merge({ class: label_attr.class|default(label_class|default('block text-yellow-500 font-bold text-2xl')) }) -%}
+    {{- parent() -}}
+{%- endblock form_label -%}
+
+{%- block radio_widget -%}
+    {%- set widget_class = widget_class|default('hidden peer') -%}
+    {{- parent() -}}
+{%- endblock radio_widget -%}
+
+{%- block form_errors -%}
+    {%- if errors|length > 0 -%}
+        {%- for error in errors -%}
+            <div class="border-2 border-red-700 bg-opacity-30 text-2xl bg-red-400 p-4 text-yellow-500 my-2 rounded-xl w-full text-wrap">{{ error.message }}</div>
+        {%- endfor -%}
+    {%- endif %}
+{%- endblock form_errors %}

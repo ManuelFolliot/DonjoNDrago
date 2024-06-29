@@ -1,0 +1,20 @@
+{% extends 'content.html.twig' %}
+{% set page_title = "Editer Race " ~  race.id %}
+{% block title %}
+	{{ page_title }}
+{% endblock %}
+
+{% block content %}
+    {{ include('race/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+    <div class="flex justify-between">
+		{{ component("Button", {
+                url: path('app_race_index', {'id': race.id}),
+                size: "w-52 h-32",
+                label: "Retour à la liste",
+            })}}
+
+		{{ include('race/_delete_form.html.twig') }}
+	</div>
+{% endblock %}
+

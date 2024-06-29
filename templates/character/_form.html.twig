@@ -1,0 +1,36 @@
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+{{ form_row(form.name)}}
+
+<div {{ stimulus_controller("newcharacter") }}>
+	<div>
+
+		{% include "character/_partials_form/avatar.html.twig" %}
+
+		{% include "character/_partials_form/job.html.twig" %}
+
+		{% include "character/_partials_form/race.html.twig" %}
+
+		{% include "character/_partials_form/stat.html.twig" %}
+
+		{% include "character/_partials_form/details.html.twig" %}
+
+		{# MARK: SUBMIT
+												 #}
+		<div aria-label="bouton valiation personnage" class="flex justify-around mt-6">
+			<div class="lg:hidden flex">
+				{{ component('Button',{
+				label: 'Retour',
+				url: path('app_profil', {id:app.user.id}),
+				size: 'w-64 h-32', }) }}</div>
+			<div>
+				{{ component("Button", {
+    				label: button_label,
+    				size: "w-64 h-32",
+    				type: "submit",
+})}}
+			</div>
+		</div>
+		{{ form_row(form._token) }}
+		{{ form_end(form, {'render_rest': false}) }}
+	</div>

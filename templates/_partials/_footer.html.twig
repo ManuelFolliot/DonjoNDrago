@@ -1,0 +1,11 @@
+{% block content %}
+	<footer class="bg-neutral-950 mt-auto flex flex-row justify-between w-full" role="footer">
+		<div class="flex flex-col items-center p-1 px-4">
+			<div class="text-red-600 text-xl font-extralight capitalize">@ copyright 2024</div>
+			<div class="text-red-600 text-xl font-extralight capitalize"><a href="{{ path('app_mentions') }}">Mentions légales</a></div>
+		</div>
+		<ul class="sm:hidden lg:flex flex-row justify-end items-center gap-5 text-red-600 p-1 px-4">
+			{% include('_partials/_links-footer.html.twig') %}
+		</ul>
+	</footer>
+{% endblock %}

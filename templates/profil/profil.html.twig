@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue sur votre profil
+{% endblock %}
+
+{% block body %}
+	<div class="flex flex-col justify-evenly gap-6 m-6">
+		<div class="flex justify-center gap-6">
+			<div class="flex items-center justify-center" aria-label="Créer un personnage">
+				{{ component("Button", {
+                    label: "Créer un personnage",
+                    url: path('app_hero_new'),
+                    size: "w-80 h-32",
+                    }) 
+                }}
+			</div>
+			<div class="flex items-center justify-center" aria-label="Créer une campagne">
+				{{ component("Button", {
+                    label: "Créer une campagne",
+                    url: path('app_campaign_new'),
+                    size: "w-80 h-32",
+                    }) 
+                }}
+			</div>
+		</div>
+		<div class="flex sm:flex-col lg:flex-row justify-center gap-6">
+			<div class="flex flex-col sm:justify-center xl:justify-start lg:basis-3/6 p-5 box sm:w-full">
+
+				<h2 class="text-4xl text-yellow-600 mb-4">Gérer personnages</h2>
+				{% for character in characters %}
+					<div class="flex justify-between items-baseline mb-4">
+						<a href="{{ path("app_hero_show", {id: character.id }) }}" class="w-9/12 mr-2">
+							<button class="bg-yellow-600 p-3 border-4 text-left border-red-900 rounded-xl text-3xl hover:bg-gradient-to-b  from-yellow-500 to-yellow-600  hover:border-red-800" aria-label="Voir {{ character.name }}">
+								{{ character.name }}
+							</button>
+						</a>
+						<div class="flex gap-4" aria-label="Editer {{ character.name }}">
+							{{ component("Button", {
+								label: 'E',
+								url: path('app_hero_edit', {id: character.id}),
+								size: "w-16 h-16",
+								}) 
+							}}
+							{{ include('character/_delete_form.html.twig', {'button_label': 'X', 'button_size': 'w-16 h-16'}) }}
+						</div>
+					</div>
+				{% endfor %}
+
+			</div>
+			<div class="flex flex-col justify-start lg:basis-3/6 p-5 box sm:w-full xl:block ">
+
+				<h2 class="text-4xl text-yellow-600 mb-4">Gérer campagnes</h2>
+				{% for campaign in campaigns %}
+					<div class="flex justify-between space-x-6 mb-4">
+						<a href="{{ path("app_campaign_show", {id: campaign.id }) }}" class="w-8/12" aria-label="lien vers {{ campaign.name }}">
+							<button class="bg-yellow-600 p-3 border-4 text-left border-red-900 rounded-xl text-3xl hover:bg-gradient-to-b  from-yellow-500 to-yellow-600  hover:border-red-800">
+							<div class="text-3xl">{{ campaign.name }}</div>
+							<div class="text-xl text-red-900">{{campaign.playerName }}</div>
+							</button>
+						</a>
+						<div class="flex gap-4" aria-label="éditer campagne {{ campaign.name }}">
+							{{ component("Button", {
+								label: 'E',
+								url: path('app_campaign_edit', {id: campaign.id}),
+								size: "w-16 h-16",
+								}) 
+							}}
+							{{ include('campaign/_delete_form.html.twig', {'button_label': 'X', 'button_size': 'w-16 h-16'}) }}
+						</div>
+					</div>
+
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

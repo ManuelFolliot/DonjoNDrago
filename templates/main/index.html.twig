@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Donjo et Drago
+{% endblock %}
+
+{% block body %}
+
+	<div class="py-10">
+		{% if not app.user %}
+			<div class="flex lg:flex-row lg:justify-center sm:flex-col sm:items-center gap-16">
+
+				{{ component("Button", {
+                label: "Se connecter",
+                url: path('app_login'),
+                size: "w-80 h-32",
+                alt: "Se connecter",
+                }) 
+            }}
+
+				{{ component("Button", {
+                label: "S'inscrire",
+                url: path('app_user_new'),
+                size: "w-80 h-32",
+                alt: "S'inscrire"
+                }) 
+            }}
+			</div>
+		{% else %}
+			<div class="flex justify-center items-center gap-16">
+				{{ component("Button", {
+                label: "Mes chroniques",
+                url: path('app_profil'),
+                size: "w-80 h-32",
+                alt: "Mes chroniques",
+                }) 
+            }}
+			</div>
+
+		{% endif %}
+	</div>
+	<div class="flex justify-center max-w-screen-lg mx-auto min-h-auto box p-5 sm:m-8 lg:m-auto">
+		<div class="flex-col justify-center divide-y-4 divide-solid divide-yellow-600">
+			<h2 class="py-4 text-4xl text-yellow-600 uppercase">
+				Les news:
+			</h2>
+			<article class="py-4 text-yellow-600 uppercase" role="article">
+				<p>21 avril 2024: Lancement officiel de DonjO et DragO</p>
+				<p>19 mars 2024: Le serveur est en maintenance actuellement, pas de date de retour à la normale prévue.</p>
+			</article>
+		</div>
+	</div>
+{% endblock %}

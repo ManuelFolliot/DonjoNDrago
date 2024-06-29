@@ -1,0 +1,14 @@
+<nav class="flex">
+    <ul class="flex flex-row flex-wrap lg:px-0 xl:px-8 items-center">
+        {% include('_partials/_links-nav.html.twig') %}   
+    </ul>
+    {% if app.user %}
+	<div class="px-8 flex flex-col justify-center content-center">
+		<a href="{{ path("app_user_show", {id: app.user.id }) }}" class="navlink p-1" aria-label="Lien vers profil utilisateur">
+			{% set avatarUrl = "images/avatar/" ~ app.user.userAvatarUrl ?? "avatar1.svg" %}
+			<img class="size-12" src="{{ asset(avatarUrl) }}" alt="accès paramètres du profil">
+			<p class="capitalize">{{ app.user.pseudo }}</p>
+		</a>
+	</div>
+    {% endif %}
+</nav>

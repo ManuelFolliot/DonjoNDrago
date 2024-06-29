@@ -1,0 +1,36 @@
+<div class="flex sm:flex-col xl:flex-row w-auto h-full max-h-64 box">
+	<div class="flex xl:flex-col justify-center px-8">
+		<turbo-frame action="replace" target="campaign-action" class="flex sm:flex-row xl:flex-col gap-2">
+			<div class="flex xl:flex-row gap-4 py-2">
+				{{ component("Button", {
+                        "label": "Ennemis",
+                        "url": path("app_campaign_enemies", {"id": campaign.id}),
+                        "size": "w-40 h-12",
+                        "textSize": "text-sm"})
+                    }}
+				{{ component("Button", {
+                        "label": "Dés",
+                        "url": path("app_campaign_dices", {"id": campaign.id}),
+                        "size": "w-40 h-12",
+                        "textSize": "text-sm",})
+                    }}
+			</div>
+			<div class="flex xl:flex-row gap-4 py-2">
+				{{ component("Button", {
+                        "label": "Background",
+                        "url": path("app_campaign_backgrounds", {"id": campaign.id}),
+                        "size": "w-40 h-12",
+                        "textSize": "text-sm",})
+                    }}
+				{{ component("Button", {
+                        "label": "Autres",
+                        "size": "w-40 h-12",
+                        "textSize": "text-sm",})
+                    }}
+			</div>
+		</turbo-frame>
+	</div>
+
+	<turbo-frame id="campaign-action" class="flex p-2 xl:w-full content-center input">
+	</turbo-frame>
+</div>

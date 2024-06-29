@@ -1,0 +1,59 @@
+{% extends 'content.html.twig' %}
+{% set page_title = "Gestion des alignements de heros" %}
+
+{% block title %}
+	{{ page_title }}
+{% endblock %}
+
+{% block content %}
+	<div class="flex justify-around">
+		{{ component("Button", {
+                url: path('app_admin'),
+                size: "w-64 h-32",
+                label: "Retour à l'accueil",
+            })}}
+		{{ component("Button", {
+                url: path('app_alignment_new'),
+                label: "Créer un alignement",
+            })}}
+	</div>
+	<table class="table-auto text-2xl w-full border border-separate border-slate-500 border-spacing-1">
+		<thead class="text-left bg-red-900 bg-opacity-20">
+			<tr>
+				<th class="border border-slate-600">Id</th>
+				<th class="border border-slate-600">Nom</th>
+				<th class="border border-slate-600">Description</th>
+				<th class="border border-slate-600">Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for alignment in alignments %}
+				<tr>
+					<td class="border border-slate-600">{{ alignment.id }}</td>
+					<td class="border border-slate-600">{{ alignment.name }}</td>
+					<td class="border border-slate-600">{{ alignment.description }}</td>
+					<td class="flex flex-wrap border border-slate-600">
+						{{ component("Button", {
+                                    url: path('app_alignment_show', {'id': alignment.id}),
+                                    size: "w-28 h-8",
+                                    label: "Voir",
+									textSize: "text-sm"
+                                })}}
+
+						{{ component("Button", {
+                                    url: path('app_alignment_edit', {'id': alignment.id}),
+                                    size: "w-28 h-8",
+                                    label: "Editer",
+									textSize: "text-sm"
+                                }
+                                )}}
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="4">Pas d'enregistrements</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

@@ -1,0 +1,9 @@
+<form aria-label="formulaire suppression campagne" method="post" action="{{ path('app_campaign_delete', {'id': campaign.id}) }}" onsubmit="return confirm('Etes vous sûr de supprimer cette campagne ?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ campaign.id) }}">
+    <div class="mb-8" aria-label="Bouton validation formulaire">
+        {{ component('Button',{
+        label: button_label ?? 'Supprimer',
+        type: 'submit',
+        size: button_size ?? 'w-40 h-20 xl:w-64 xl:h-32', }) }}
+    </div>
+</form>

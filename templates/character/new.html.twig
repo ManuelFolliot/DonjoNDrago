@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Création d'un nouveau personnage
+{% endblock %}
+
+{% block body %}
+	<div class="flex lg:gap-4 sm:gap-1 relative">
+		<aside class="hidden w-64 min-h-auto lg:flex flex-col justify-start m-8 gap-8">
+			<div class="sticky top-32">
+				<div class="mb-8">
+					{{ component('Button',{
+				label: 'Retour',
+				url: path('app_profil', {id:app.user.id}),
+				size: 'w-64 h-32', }) }}
+				</div>
+				<div>
+					<ul role="list" class="text-yellow-500 p-4 box">
+						<li class="mb-3 border-b-2 border-opacity-0 border-yellow-500 hover:border-opacity-100 ">
+							<a href="#character_name">Etape 1</a>
+						</li>
+						<li class="mb-3 border-b-2 border-opacity-0 border-yellow-500 hover:border-opacity-100 ">
+							<a href="#character_job">Etape 2</a>
+						</li>
+						<li class="mb-3 border-b-2 border-opacity-0 border-yellow-500 hover:border-opacity-100 ">
+							<a href="#character_race">Etape 3</a>
+						</li>
+						<li class="mb-3 border-b-2 border-opacity-0 border-yellow-500 hover:border-opacity-100 ">
+							<a href="#character_stat">Etape 4</a>
+						</li>
+						<li class="mb-3 border-b-2 border-opacity-0 border-yellow-500 hover:border-opacity-100 ">
+							<a href="#character_infos">Etape 5</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</aside>
+		<div class="flex flex-col mx-auto min-h-auto p-2">
+			<h1 class="flex justify-center  box  text-yellow-500 text-4xl m-8 p-4">Créer votre personnage</h1>
+			<div class="flex justify-center items-center  box p-8 m-8">
+				{{ include('character/_form.html.twig', {button_label: "Créér le personnage", initpool: "12"}) }}
+			</div>
+		</div>
+	</div>
+{% endblock %}

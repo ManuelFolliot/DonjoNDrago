@@ -1,0 +1,38 @@
+<form aria-label="formulaire connexion" method="post">
+	<div class="flex flex-col items-center">
+		{% if error %}
+			<div class="alert alert-danger">Mot de passe ou Email incorrect</div>
+		{% endif %}
+		{% if app.user %}
+			<div class="mb-3">
+				Vous êtes connecté en tant que 
+				{{ app.user.userIdentifier }}:
+				<a href="{{ path('app_logout') }}" class="text-red-500">Se deconnecter</a>
+			</div>
+		{% endif %}
+
+		<div class="p-8 flex flex-col">
+			<label for="inputEmail" class="text-4xl font-bold capitalize">Email</label>
+			<input type="email" value="" name="email" id="inputEmail" class="form-control h-16 input" autocomplete="email" required autofocus>
+		</div>
+
+		<div class="p-8 flex flex-col">
+			<label for="inputPassword" class="text-4xl font-bold capitalize">Password</label>
+			<input type="password" name="password" id="inputPassword" class="form-control h-16 input" autocomplete="current-password" required>
+
+			<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+			<div class="checkbox mb-3">
+				<label>
+					<input type="checkbox" name="_remember_me" class="appearance-none w-4 h-4 border-2 border-yellow-500 rounded-sm bg-opacity-0 checked:bg-red-500 text-2xl">
+					Se Souvenir de moi
+				</label>
+			</div>
+		</div>
+
+		{{ component('Button', {
+            label: "Se connecter",
+            type: "submit",
+        }) }}
+	</div>
+</form>

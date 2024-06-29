@@ -1,0 +1,16 @@
+{% extends 'content.html.twig' %}
+{% set page_title = "Créer une nouvelle classe" %}
+
+{% block title %}
+	{{ page_title }}
+{% endblock %}
+
+{% block content %}
+	{% include 'job/_form.html.twig' with {'button_label': "Créer la classe"} %}
+    <div>
+	{{ component("Button", {
+        url: path('app_job_index'),
+        label: "Retour à la liste",
+        })}}
+        </div>
+{% endblock %}

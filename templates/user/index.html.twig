@@ -1,0 +1,68 @@
+{% extends 'content.html.twig' %}
+{% set page_title = "Gestion des utilisateurs" %}
+
+{% block title %}
+	{{ page_title }}
+{% endblock %}
+
+{% block content %}
+	<div class="flex justify-around">
+		{{ component("Button", {
+                url: path('app_admin'),
+                size: "w-64 h-32",
+                label: "Retour à l'accueil",
+            })}}
+		{{ component("Button", {
+                url: path('app_user_new'),
+                size: "w-64 h-32",
+                label: "Créer un utilisateur",
+            })}}
+	</div>
+	<table class="table-auto text-2xl w-full border border-separate border-slate-500 border-spacing-1">
+		<thead class="text-left bg-red-900 bg-opacity-20">
+			<tr>
+				<th class="border border-slate-600">Id</th>
+				<th class="border border-slate-600">Email</th>
+				<th class="border border-slate-600">Roles</th>
+				{# <th>Password</th> #}
+				<th class="border border-slate-600">Pseudo</th>
+				<th class="border border-slate-600">Avatar</th>
+				<th class="border border-slate-600">Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for user in users %}
+				<tr class="">
+					<td class="border border-slate-600">{{ user.id }}</td>
+					<td class="border border-slate-600">{{ user.email }}</td>
+					<td class="border border-slate-600">{{ user.roles ? user.roles|json_encode : '' }}</td>
+					{# <td>{{ user.password }}</td> #}
+					<td class="border border-slate-600">{{ user.pseudo }}</td>
+					<td class="border border-slate-600">{{ user.userAvatarUrl }}</td>
+					<td class="border border-slate-600">
+						<div class="flex flex-wrap ">
+							{{ component("Button", {
+                                    url: path('app_user_show', {'id': user.id}),
+                                    size: "w-28 h-8",
+                                    label: "Voir",
+									textSize: "text-sm"
+                                })}}
+
+							{{ component("Button", {
+                                    url: path('app_user_edit', {'id': user.id}),
+                                    size: "w-28 h-8",
+                                    label: "Editer",
+									textSize: "text-sm"
+                                }
+                                )}}
+						</div>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="7">Pas d'enregistrements</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

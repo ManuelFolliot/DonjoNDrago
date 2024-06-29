@@ -1,0 +1,7 @@
+<form aria-label="formulaire suppression de classe" method="post" action="{{ path('app_job_delete', {'id': job.id}) }}" onsubmit="return confirm('Etes vous sûr de supprimer cette classe ?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ job.id) }}">
+    {{ component("Button", {
+                label: "Supprimer",
+                type: "submit"
+            })}}
+</form>

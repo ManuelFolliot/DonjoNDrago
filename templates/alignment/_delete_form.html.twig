@@ -1,0 +1,9 @@
+<form aria-label="formulaire suppression alignement" method="post" action="{{ path('app_alignment_delete', {'id': alignment.id}) }}" onsubmit="return confirm('Etes vous sûr de supprimer cet alignement ?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ alignment.id) }}">
+    {{ component("Button", {
+                size: "w-40 h-20 xl:w-64 xl:h-32",
+                textSize: "sm:text-sm lg:text-2xl",
+                label: "Supprimer",
+                type: "submit"
+            })}}
+</form>

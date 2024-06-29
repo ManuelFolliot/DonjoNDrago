@@ -1,0 +1,11 @@
+{% if type != "submit" %}
+<a href="{{ url }}">
+{% endif %}
+    <div class="flex rounded-3xl mx-auto bg-gradient-to-br from-yellow-600 to-yellow-900 hover:to-yellow-500 p-1 active:scale-95 active:shadow-none shadow-xl {{ size }}">
+    <button class="flex-1 border-solid rounded-3xl bg-red-900 text-bold {{ textSize }} text-yellow-600 hover:text-yellow-500 uppercase px-4 shadow-[inset_0_-10px_5px_rgba(0,0,0,0.5),inset_0_8px_4px_rgba(235,222,222,0.25)]" type={{ type }}>
+        {{ label }}
+    </button>
+    </div>
+{% if type != "submit" %}
+</a>
+{% endif %}

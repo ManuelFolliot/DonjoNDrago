@@ -1,0 +1,91 @@
+{% extends 'content.html.twig' %}
+{% set page_title = "Hero " ~ character.name %}
+
+{% block title %}
+	{{ page_title }}
+{% endblock %}
+
+{% block content %}
+	<div class="flex flex-col xl:flex-row justify-around m-auto gap-6 text-yellow-500 text-2xl">
+		<div class="flex xl:flex-col justify-between items-center p-3">
+			<div class="flex flex-wrap xl:flex-col items-center xl:mb-4 gap-3 ">
+				<img src="{{asset("images/avatar/" ~ character.characterAvatarUrl) }}" alt={{character.characterAvatarUrl}} class="border-4 border-solid border-yellow-600 rounded-2xl w-32 xl:w-auto">
+				<div class="p-2 border-2 border-solid border-yellow-600 rounded-2xl xl:w-full mx-1 text-center text-3xl">Niveau:<br><span class="text-red-600 font-bold"	>{{character.level}}</span></div>
+				<div class="p-2 border-2 border-solid border-yellow-600 rounded-2xl xl:w-full mx-1 text-center text-2xl">Points de vie:<br><span class="text-red-600 font-bold">{{character.lifePoints}}</span></div>
+			</div>
+			<div class="flex xl:flex-col p-4 flex-wrap items-center gap-3">
+				{{ component("Button", {
+								label: 'Editer',
+								url: path('app_hero_edit', {id: character.id}),
+								size: "w-40 h-32",
+								}) 
+							}}
+				{{ component("Button", {
+							url: path('app_profil'),
+							size: "w-40 h-32",
+							label: "Retour liste",
+						})}}
+			</div>
+		</div>
+		<div class="flex justify-center p-3 border-2 border-yellow-600 rounded-2xl">
+			<table aria-label="tableau des attributs du personnage">
+				<thead>
+					<tr>
+						<th class=" xl:p-6">Attributs</th>
+						<th></th>
+						<th class=" xl:p-6">Modificateur de dés</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr >
+						<td>Force</td>
+						<td class="text-right text-red-600 font-bold">{{character.statStrength}}</td>
+						<td class="text-center text-red-600 font-bold">{{ character.race.strengthModifier }}</td>
+					</tr>
+					<tr >
+						<td>Endurance</td>
+						<td class="text-right text-red-600 font-bold">{{character.statEndurance}}</td>
+						<td class="text-center text-red-600 font-bold">{{ character.race.enduranceModifier }}</td>
+					</tr>
+					<tr >
+						<td>Dextérité</td>
+						<td class="text-right text-red-600 font-bold">{{character.statDexterity}}</td>
+						<td class="text-center text-red-600 font-bold">{{ character.race.strengthModifier }}</td>
+					</tr>
+					<tr >
+						<td>Intelligence</td>
+						<td class="text-right text-red-600 font-bold">{{character.statIntelligence}}</td>
+						<td class="text-center text-red-600 font-bold">{{ character.race.intelligenceModifier }}</td>
+					</tr>
+					<tr >
+						<td>Sagesse</td>
+						<td class="text-right text-red-600 font-bold">{{character.statWisdom}}</td>
+						<td class="text-center text-red-600 font-bold">{{ character.race.wisdomModifier }}</td>
+					</tr>
+					<tr >
+						<td>Charisme</td>
+						<td class="text-right text-red-600 font-bold">{{character.statCharisma}}</td>
+						<td class="text-center text-red-600 font-bold">{{ character.race.charismaModifier }}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="px-3 border-2 border-yellow-600 rounded-2xl ">
+			<div class="flex justify-between my-6 ">
+				<div class="p-2 w-full border-2 border-yellow-600 rounded-2xl mx-1 text-center">Nom:<br><span class="text-red-600 font-bold">{{character.name}}</span></div>
+				<div class="p-2 w-full border-2 border-yellow-600 rounded-2xl mx-1 text-center">Alignement:<br><span class="text-red-600 font-bold">{{character.alignment.name}}</span></div>
+				<div class="p-2 w-full border-2 border-yellow-600 rounded-2xl mx-1 text-center">Âge:<br><span class="text-red-600 font-bold">{{character.age}}
+					ans</span></div>
+			</div>
+			<div class="flex justify-between my-6">
+				<div class="p-2 w-full border-2 border-yellow-600 rounded-2xl mx-1 text-center">Classe:<br><span class="text-red-600 font-bold">{{character.job.name}}</span></div>
+				<div class="p-2 w-full border-2 border-yellow-600 rounded-2xl mx-1 text-center">Race:<br><span class="text-red-600 font-bold">{{character.race.name}}</span></div>
+			</div>
+			<div class="text-justify mt-6 p-8 overflow-auto border-2 border-yellow-600 rounded-2xl">
+				<h2 class="text-3xl">Votre histoire:</h2>
+				<br>
+				<p class="text-red-600 font-bold">{{character.background}}</p>
+			</div>
+		</div>
+	</div>
+{% endblock %}

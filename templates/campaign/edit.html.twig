@@ -1,0 +1,20 @@
+{% extends 'content.html.twig' %}
+{% set page_title = "Editer la campagne  " ~ campaign.name %}
+
+{% block title %}{{ page_title }}
+{% endblock %}
+
+{% block content %}
+    
+    {{ include('campaign/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+    <div class="flex justify-between gap-8">
+		{{ component("Button", {
+                url: path('app_profil'),
+                size: "w-52 h-32",
+                label: "Retour à la liste",
+            })}}
+
+    {{ include('campaign/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{# MARK: JOB
+		Form JOB (Character Class) #}
+	<div class="pt-8">{{ form_label(form.job )}}</div>
+	{{ form_errors(form.job) }}
+	<div class="input flex sm:flex-col lg:flex-row gap-8 justify-center" {{ stimulus_controller("character-select") }}>
+		<div class="flex justify-between sm:flex(row lg:flex-col gap-2 basis-1/4 p-4">
+			{% for job in form.job %}
+				<div>
+					{{ form_widget(job, {attr: {
+						"data-action": "click->character-select#show",
+						"data-character-select-id-param": job.vars.value,
+						"data-character-select-target": "radios",
+						"aria-required": "true"
+					}}) }}
+					{{ form_label(job, null, {"label_attr": {"class": "radioselect"}}) }}
+				</div>
+			{% endfor %}
+		</div>
+		<div class="border-2 border-red-900 p-4 flex justify-center overflow-hidden rounded-lg relative basis-3/4">
+		<div class="flex justify-center items-center text-4xl text-yellow-500" data-character-select-target="emptyDescription">Veuillez selectionner une Classe. </div>
+			{% for job in form.job.vars.choices %}
+				<div class="hidden" data-description-id="{{ job.value }}" data-character-select-target="description">
+					<div class="h-full">
+						<img class="object-cover max-h-[400px]" src="{{ asset("images/job/" ~ job.data.jobUrl) }}" alt="{{ job.data.jobUrl }}">
+					</div>
+					<div class=" text-yellow-500 text-2xl absolute bottom-2 left-2 box p-2 m-4 ">{{ job.data.description }}</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>

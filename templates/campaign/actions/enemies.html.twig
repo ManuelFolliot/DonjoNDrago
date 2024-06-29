@@ -1,0 +1,30 @@
+<turbo-frame id="campaign-action">
+	<ul class="flex flex-row flex-wrap w-full h-full gap-4" {{ stimulus_controller('dnd-monsters') }} data-dnd-monsters-target="monsters">
+		<li>
+			<img class="rounded-2xl w-16" src="{{ asset("images/enemies/wolf-head.svg")}}" alt="loup" data-action="click->enemies-add#add" data-enemy-name="Loup">
+		</li>
+		<li>
+			<img class="rounded-2xl w-16" src="{{ asset("images/enemies/bestial-fangs.svg")}}" alt="crocs bestiaux" data-action="click->enemies-add#add" data-enemy-name="Crocs bestiaux">
+		</li>
+		<li>
+			<img class="rounded-2xl w-16" src="{{ asset("images/enemies/female-vampire.svg")}}" alt="vampiresse" data-action="click->enemies-add#add" data-enemy-name="Vampiresse">
+		</li>
+		<li>
+			<img class="rounded-2xl w-16" src="{{ asset("images/enemies/labrador-head.svg")}}" alt="labrador infernal" data-action="click->enemies-add#add" data-enemy-name="Labrador infernal">
+		</li>
+		<li>
+			<img class="rounded-2xl w-16" src="{{ asset("images/enemies/mummy-head.svg")}}" alt="momie" data-action="click->enemies-add#add" data-enemy-name="Momie">
+		</li>
+		<li>
+			<img class="rounded-2xl w-16" src="{{ asset("images/enemies/ghost.svg")}}" alt="fantôme" data-action="click->enemies-add#add" data-enemy-name="Fantôme">
+		</li>
+		<li>
+			<img class="rounded-2xl w-16" src="{{ asset("images/enemies/goblin.svg")}}" alt="goblin" data-action="click->enemies-add#add" data-enemy-name="Gobelin">
+		</li>
+		<li>
+			<img class="rounded-2xl w-16" src="{{ asset("images/enemies/hydra.svg")}}" alt="hydre" data-action="click->enemies-add#add" data-enemy-name="Hydre">
+		</li>
+
+	</ul>
+
+</turbo-frame>

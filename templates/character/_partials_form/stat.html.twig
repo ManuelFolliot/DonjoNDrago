@@ -1,0 +1,52 @@
+<div id="character_stat">
+	<div class=" text-yellow-500 text-2xl font-bold pt-8">Total de points à répartir:
+		<span data-newcharacter-target="pool" data-initpool={{ initpool }} class="bg-yellow-500 text-red-900 text-4xl px-4 rounded-t-2xl mx-2"></span>
+	</div>
+    
+	<div class="flex flex-wrap rounded-xl border-2 border-yellow-500 p-8 gap-8 justify-center" id="character_stats">
+		{% for stat in [form.statStrength, form.statDexterity, form.statEndurance, form.statIntelligence, form.statWisdom, form.statCharisma] %}
+			<div class="stat">
+			{{ form_errors(stat) }}
+				<div class="border-2 border-red-950 rounded-xl">
+					<div class="px-4 py-2 label-card bg-red-900 rounded-tl-xl rounded-tr-xl text-yellow-500 text-2xl font-bold ">
+						{{ form_label(stat) }}
+					</div>
+					<div class="px-4 py-2 text-red-900 bg-yellow-500 text-2xl">
+						<div class="flex justify-between items-center">
+							<div>Valeur de base:
+							</div>
+							<div>
+								<div class="text-2xl flex ">
+									{{ form_widget(stat, {attr: {"data-newcharacter-target": stat.vars.name[4:]|lower ~ "Base", "aria-required": "true", "data-action": "change->newcharacter#updateChange", "data-newcharacter-name-param": stat.vars.name[4:]|lower }}) }}
+									<div class="flex flex-col gap-2">
+										<button type="button" class="border-2 border-red-950 rounded-md" data-action="click->newcharacter#increaseStat"
+                                        data-newcharacter-name-param={{stat.vars.name[4:]|lower}}>
+											+
+										</button>
+										<button type="button" class="border-2 border-red-950 rounded-md" data-action="click->newcharacter#decreaseStat"
+                                        data-newcharacter-name-param={{stat.vars.name[4:]|lower}}>
+											-
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="py-2 text-red-900 bg-yellow-500 text-2xl">
+							<div class="flex">
+								<p>Modificateur de race:
+								</p>
+								<p data-newcharacter-target="{{ stat.vars.name[4:]|lower}}Modifier" class="w-8 px-1">+2
+								</p>
+							</div>
+						</div>
+
+					</div>
+					<div class="px-4 py-2 text-yellow-500 text-2xl bg-red-900 rounded-bl-xl rounded-br-xl">Total:
+						<span data-newcharacter-target="totals" id="{{ stat.vars.name[4:]|lower}}Total" class="text-4xl bold">16</span>
+					</div>
+				</div>
+			</div>
+
+		{% endfor %}
+	</div>
+</div>

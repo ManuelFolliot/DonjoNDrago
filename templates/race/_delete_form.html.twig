@@ -1,0 +1,7 @@
+<form aria-label="formulaire suppression de race" method="post" action="{{ path('app_race_delete', {'id': race.id}) }}" onsubmit="return confirm('Etes vous sûr de supprimer cette race ?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ race.id) }}">
+    {{ component("Button", {
+                label: "Supprimer",
+                type: "submit"
+            })}}
+</form>

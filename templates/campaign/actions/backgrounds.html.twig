@@ -1,0 +1,14 @@
+{% set bgImages = ["fantasy-forest", "fantasy-montain", "fantasy-montain-bridge", "fantasy-forest-montain"] %}
+{# TODO dynamique list of all files in images/background foler #}
+
+<turbo-frame id="campaign-action">
+	<div class="flex gap-8 items-center">
+		{% for bgimage in bgImages %}
+			<div>
+				 {# TODO better alt tag #}
+				<img src="{{asset("images/background/" ~ bgimage ~ "_thumb.webp")}}" alt="" class="object-cover h-32 rounded-2xl" 
+				data-mapped-url= "{{ asset("images/background/" ~ bgimage ~ ".webp") }}"  data-action="click->background-campain#change">
+			</div>
+		{% endfor %}
+	</div>
+</turbo-frame>
